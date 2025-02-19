@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: expense1
+  namespace: expense
   labels:
     app: frontend
     tier: web
@@ -15,7 +15,7 @@ spec:
       tier: web
       project: expense
   template:
-    metadata: 
+    metadata:
       labels:
         app: frontend
         tier: web
@@ -27,9 +27,9 @@ spec:
 ---
 kind: Service
 apiVersion: v1
-metadata: 
+metadata:
   name: frontend
-  namespace: expense1
+  namespace: expense
 spec:
   type: LoadBalancer
   selector:
@@ -39,5 +39,5 @@ spec:
   ports:
   - name: frontend-port
     protocol: TCP
-    port: 80    # service port
-    targetPort: 80  # container port
+    port: 80 # service port
+    targetPort: 80 # container port

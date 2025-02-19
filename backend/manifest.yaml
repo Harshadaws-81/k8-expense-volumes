@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: backend
-  namespace: expense1
+  namespace: expense
 data:
   DB_HOST: mysql
 ---
@@ -10,7 +10,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: expense1
+  namespace: expense
   labels:
     app: backend
     tier: api
@@ -34,13 +34,13 @@ spec:
         image: awsdevopsharsha/backend:v1
         envFrom:
         - configMapRef:
-            name: backend  
+            name: backend
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: backend
-  namespace: expense1
+  namespace: expense
 spec:
   selector:
     app: backend
